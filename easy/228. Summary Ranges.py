@@ -4,17 +4,22 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[str]
         """
-        prev = nums[0]
+        prev = 0
+
         res = []
-        for j in range(len(nums)):
-            pass
+        has_prev = False
+        # for j in range(len(nums)):
+
         for i in nums:
             print(f"prev: {prev}\ni: {i}")
-            if (i - prev) <= 1:
+            if (i - prev) == 1:
                 prev = i
+                has_prev = True
             else:
                 print('------')
-                res[-1] = res[-1] + "->" + str(prev)
+                if has_prev:
+                    res[-1] = res[-1] + "->" + str(prev)
+                    has_prev = False
                 print(res[-1])
                 res.append(str(i))
                 print(res)
