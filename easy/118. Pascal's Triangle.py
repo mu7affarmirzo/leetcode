@@ -12,27 +12,49 @@
 #             result.append(curr)
 #             prev = curr
 #         return result
-#
-# a = Solution()
-# s = a.generate(6)
-# print(s)
+
+class Solution(object):
+    def generate(self, numRows):
+        """
+        :type numRows: int
+        :rtype: List[List[int]]
+        """
+        result = []
+        for i in range(numRows):
+            internal = []
+            for j in range(i+1):
+                temp = []
+                if i >= 2:
+                    temp.append(0)
+                    temp += result[i-1]
+                    temp.append(0)
+                    internal.append(temp[j] + temp[j+1])
+                else:
+                    internal.append(1)
+            result.append(internal)
+        return result
+
+
+a = Solution()
+s = a.generate(6)
+print(s)
 # # print(s[5])
 # #
 # # for i in s:
 # #     print(i)
 
 
-def binomial_coefficients_recursive(N, i=0, prev=1, result=None):
-    if result is None:
-        result = [1]
-
-    if i == N:
-        return result
-    else:
-        curr = (prev * (N - i)) // (i + 1)
-        result.append(curr)
-        return binomial_coefficients_recursive(N, i + 1, curr, result)
-
-N = 6  # Replace this with your desired N value
-coefficients = binomial_coefficients_recursive(N)
-print(coefficients)
+# def binomial_coefficients_recursive(N, i=0, prev=1, result=None):
+#     if result is None:
+#         result = [1]
+#
+#     if i == N:
+#         return result
+#     else:
+#         curr = (prev * (N - i)) // (i + 1)
+#         result.append(curr)
+#         return binomial_coefficients_recursive(N, i + 1, curr, result)
+#
+# N = 6  # Replace this with your desired N value
+# coefficients = binomial_coefficients_recursive(N)
+# print(coefficients)
