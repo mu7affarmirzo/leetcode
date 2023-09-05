@@ -6,13 +6,23 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         res = []
-        n, m = len(nums1), len(nums2)
+        m = {}
 
-        for i in range(n):
-            for j in range(m):
-                pass
+        for i in nums1:
+            m[i[0]] = i[1]
+
+        for i in nums2:
+            if i[0] in m:
+                m[i[0]] += i[1]
+            else:
+                m[i[0]] = i[1]
+
+        for i, v in m.items():
+            res.append([i, v])
+
+        return sorted(res)
 
 
 a = Solution()
-a = a.mergeArrays([[1,2],[2,3],[4,5]], [[1,4],[3,2],[4,1]])
+a = a.mergeArrays([[1,2],[2,3],[4,5], [5,1]], [[1,4],[3,2],[4,1]])
 print(a)
