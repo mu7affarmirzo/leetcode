@@ -30,10 +30,9 @@
 # a = a.maxEnvelopes([[5,4],[6,4],[6,7],[2,3]])
 # print(a)
 #
-x = [1,3]
-res = 0
-for i in x:
-    res ^= i
-    print(res)
-print(res)
-print(1^3)
+a = {
+    'alfa': 1,
+    'betta': 2
+}
+
+print(a.get('alfa1'))
