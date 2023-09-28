@@ -1,29 +1,27 @@
-# class Solution(object):
-#     def answerQueries(self, nums, queries):
-#         """
-#         :type nums: List[int]
-#         :type queries: List[int]
-#         :rtype: List[int]
-#         """
-#         res = []
-#         for i in range(len(queries)):
-#             temp = []
-#             max_l = 0
-#             a, b = 0, len(nums) - 1
-#             while a <= b:
-#                 print(temp, nums[a], queries[i])
-#                 if sum(temp) + nums[a] <= queries[i]:
-#                     temp.append(nums[a])
-#                 elif sum(temp) + nums[a] > queries[i]:
-#                     if len(temp) > max_l:
-#                         max_l = len(temp)
-#                     temp = []
-#                 a += 1
-#             res.append(max_l)
-#         return res
-#
-#
-#
-# a = Solution()
-# a = a.answerQueries([4,5,2,1], [3,10,21])
-# print(a)
+class Solution(object):
+    def answerQueries(self, nums, queries):
+        """
+        :type nums: List[int]
+        :type queries: List[int]
+        :rtype: List[int]
+        """
+        # if min(queries) < min(nums):
+        #     return [0]
+        res = []
+        print(len(nums))
+        for i in range(len(queries)):
+            temp = []
+            for j in range(len(nums)):
+                print(queries[i], nums[j])
+                if sum(temp) + nums[j] <= queries[i]:
+                    temp.append(nums[j])
+            print('-----', temp)
+            res.append(len(temp))
+
+        return res
+
+
+a = Solution()
+a = a.answerQueries([624082], [972985,564269,607119,693641,787608,46517,500857,140097])
+print(a)
+
